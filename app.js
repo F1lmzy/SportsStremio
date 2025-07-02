@@ -101,6 +101,7 @@ function defineStreamHandler() {
                             try {
                                 const decipheredUrl = await getProviderUrl(link);
                                 if (decipheredUrl) {
+                                    console.log(`[ADDON] SUCCESS from ${providerId}. Stream URL for ${eventGroup.title}: ${decipheredUrl}`);
                                     let providerName = providerId;
                                     if (providerId === 'streamtp') providerName = 'StreamTP';
                                     if (providerId === 'la12hd') providerName = 'La12HD';
@@ -113,7 +114,7 @@ function defineStreamHandler() {
                                     optionCounter++; 
                                 }
                             } catch (error) {
-                                console.error(`[ADDON] Error al descifrar por ${providerId} para ${eventGroup.title} (enlace ${i+1}, ${link}):`, error.message);
+                                console.error(`[ADDON] CRITICAL_ERROR from ${providerId} for ${eventGroup.title}. Link: ${link}. Error:`, error);
                             }
                         }
                     }
